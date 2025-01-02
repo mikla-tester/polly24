@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 const httpServer = createServer();
 const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: "https://polly24.onrender.com",
       methods: ["GET"],
       credentials: true
   }

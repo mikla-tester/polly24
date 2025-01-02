@@ -35,7 +35,8 @@
 <script>
 import ResponsiveNav from '@/components/ResponsiveNav.vue';
 import io from 'socket.io-client';
-const socket = io("localhost:3000");
+sessionStorage.setItem("dataServer", "https://polly24.onrender.com");
+const socket = io(sessionStorage.getItem("dataServer"));
 
 export default {
   name: 'StartView',
