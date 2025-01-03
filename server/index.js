@@ -1,7 +1,20 @@
 import { createServer } from "http";
 import { Server } from "socket.io";
+import express from "express";
 
-const httpServer = createServer();
+let httpServer;
+
+if (process.env.NODE_ENV === 'production') {
+  const app = express();
+  httpServer = createServer(app);
+
+  app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+}
+else {
+httpServer = createServer();
 const io = new Server(httpServer, {
     cors: {
       origin: "*",
@@ -9,7 +22,7 @@ const io = new Server(httpServer, {
       credentials: true
   }
 });
-
+}
 // Read in the "class" to store all our data on the server side
 // If you need to change how data is handled, check the Data.js file!
 

@@ -35,7 +35,7 @@
 <script>
 import ResponsiveNav from '@/components/ResponsiveNav.vue';
 import io from 'socket.io-client';
-sessionStorage.setItem("dataServer", "https://polly24-b.onrender.com");
+sessionStorage.setItem("dataServer", "");
 const socket = io(sessionStorage.getItem("dataServer"));
 
 export default {
