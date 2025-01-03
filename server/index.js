@@ -10,7 +10,10 @@ if (process.env.NODE_ENV === 'production') {
   httpServer = createServer(app);
   io = new Server(httpServer);
   app.get('/', (req, res) => {
-    res.sendFile(import.meta.dirname.split("/").pop().join("/") +'/dist/index.html');
+    let path = import.meta.dirname.split("/");
+    path.pop();
+
+    res.sendFile(path.join("/") +'/dist/index.html');
 });
 
 }
