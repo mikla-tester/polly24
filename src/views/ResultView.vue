@@ -1,11 +1,13 @@
 <template>
   <div>
-    lang: {{ lang }}
-    {{ question.q }}
-  </div>
-  <BarsComponent v-bind:labels="question.a" v-bind:data="submittedAnswers"/>
+    <div>
+      lang: {{ lang }}
+      {{ question.q }}
+    </div>
+    <BarsComponent v-bind:labels="question.a" v-bind:data="submittedAnswers"/>
 
-  <span>{{ submittedAnswers }}</span>
+    <span>{{ submittedAnswers }}</span>
+  </div>
 </template>
 
 <script>
