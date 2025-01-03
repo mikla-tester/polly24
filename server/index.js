@@ -3,11 +3,12 @@ import { Server } from "socket.io";
 import express from "express";
 
 let httpServer;
+let io;
 
 if (process.env.NODE_ENV === 'production') {
   const app = express();
   httpServer = createServer(app);
-
+  io = new Server(httpServer);
   app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
@@ -15,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 else {
 httpServer = createServer();
-const io = new Server(httpServer, {
+io = new Server(httpServer, {
     cors: {
       origin: "*",
       methods: ["GET"],
