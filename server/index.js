@@ -9,10 +9,10 @@ if (process.env.NODE_ENV === 'production') {
   const app = express();
   httpServer = createServer(app);
   io = new Server(httpServer);
+  let path = import.meta.dirname.split("/");
+  path.pop();
+  app.use(express.static(path.join("/") + '/dist/'));
   app.get('/', (req, res) => {
-    let path = import.meta.dirname.split("/");
-    path.pop();
-
     res.sendFile(path.join("/") +'/dist/index.html');
 });
 
