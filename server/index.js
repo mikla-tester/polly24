@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
   let path = import.meta.dirname.split("/");
   path.pop();
   app.use(express.static(path.join("/") + '/dist/'));
-  app.get('/', (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.join("/") +'/dist/index.html');
 });
 
